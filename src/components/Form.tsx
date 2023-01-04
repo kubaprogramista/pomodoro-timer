@@ -10,19 +10,19 @@ const Form = () => {
       <br />
       <input
         type="number"
-        className="number1"
-        onChange={(e) => setNumber1(e.target.value)}
+        className="input1"
+        onChange={(e) => setNumber1(+e.target.value)}
       />
       <br />
       <br />
       <input
         type="number"
-        className="number2"
-        onChange={(e) => setNumber2(e.target.value)}
+        className="input2"
+        onChange={(e) => setNumber2(+e.target.value)}
       />
       <br />
       <br />
-      <button onClick={() => setSuma(+number1 + +number2)}>Add</button>
+      <button onClick={() => setSuma(number1 + number2)}>Add</button>
       <div className="result">Suma: {suma}</div>
     </>
   );
