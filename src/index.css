@@ -15,6 +15,7 @@
   border: 0;
   color: whitesmoke;
   font-family: "Montserrat", sans-serif;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
 html {
@@ -44,7 +45,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(37, 37, 37);
+  background: rgb(27, 27, 27);
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
@@ -52,6 +53,7 @@ body {
 
 main {
   background: var(--background-color);
+  background: linear-gradient(var(--background-color), rgb(234, 80, 80));
   padding: 75px;
   border-radius: 20px;
 }
@@ -89,6 +91,10 @@ h1 {
   font-size: 4rem;
 }
 
+input[type="number"]:focus {
+  outline: var(--font-color) solid 2px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -101,6 +107,7 @@ input::-webkit-inner-spin-button {
 }
 
 .start-button {
+  position: relative;
   margin-top: 15px;
   padding: 25px;
   font-size: 1.5rem;
@@ -112,7 +119,25 @@ input::-webkit-inner-spin-button {
   transition: all 0.1s ease-in-out;
 }
 
+.start-button::after {
+  content: "";
+  position: absolute;
+  bottom: 23px;
+  left: 25px;
+  width: 77px;
+  height: 3.5px;
+  border-radius: 5px;
+  background: var(--font-color);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  transform: scaleX(0%);
+  transition: transform 0.1s ease-in-out;
+}
+
 .start-button:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 0 var(--font-color);
+}
+
+.start-button:hover::after {
+  transform: scaleX(100%);
 }
