@@ -1,15 +1,13 @@
 import Heading from "./components/Heading";
-import Form from "./components/Form";
+import Timer from "./components/Timer";
 
 function App() {
-  let numberOne = document.querySelector(".number1");
-  console.log(numberOne);
-
-  const add = (v1: number, v2: number) => v1 + v2;
+  let inputMinutes: number = 30;
+  let inputSeconds: number = 0;
   return (
     <>
-      <Heading title={"Put 2 numbers"} />
-      <Form />
+      <Heading title={""} />
+      <Timer inputMinutes={inputMinutes} inputSeconds={inputSeconds} />
     </>
   );
 }
