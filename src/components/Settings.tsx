@@ -3,6 +3,7 @@ import { useState } from "react";
 import ShowTimer from "./ShowTimer";
 
 const Settings = () => {
+  const [isShown, setIsShown] = useState(true);
   const [showTimer, setShowTimer] = useState(false);
   const [inputMinutes, setInputMinutes] = useState(25);
   const [inputSeconds, setInputSeconds] = useState(0);
@@ -42,7 +43,8 @@ const Settings = () => {
         <button
           className="start-button"
           onClick={() => {
-            setShowTimer(true);
+            setIsShown(!isShown);
+            setShowTimer(isShown);
           }}
         >
           START
