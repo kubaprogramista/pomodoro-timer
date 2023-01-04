@@ -56,6 +56,7 @@ main {
   background: linear-gradient(var(--background-color), rgb(234, 80, 80));
   padding: 75px;
   border-radius: 20px;
+  border: 5px solid rgb(234, 120, 120);
 }
 
 .timer {
