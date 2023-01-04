@@ -2,8 +2,6 @@ import Heading from "./components/Heading";
 import Settings from "./components/Settings";
 
 function App() {
-  let inputMinutes: number = 25;
-  let inputSeconds: number = 0;
   return (
     <>
       <main>
