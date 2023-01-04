@@ -1,5 +1,6 @@
 import Timer from "./Timer";
 import { useState } from "react";
+import ShowTimer from "./ShowTimer";
 
 const Settings = () => {
   const [showTimer, setShowTimer] = useState(false);
@@ -24,7 +25,7 @@ const Settings = () => {
           START
         </button>
       </section>
-      <Timer
+      <ShowTimer
         inputMinutes={inputMinutes}
         inputSeconds={inputSeconds}
         show={showTimer}
@@ -32,5 +33,4 @@ const Settings = () => {
     </>
   );
 };
-
 export default Settings;
