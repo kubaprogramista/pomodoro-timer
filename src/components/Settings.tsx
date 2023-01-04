@@ -1,6 +1,4 @@
-import React from "react";
-
-const Settings = () => {
+const Settings = ({}) => {
   return (
     <>
       <section className="settings">
@@ -8,7 +6,7 @@ const Settings = () => {
           <input type="number" placeholder="25" className="minutes" />
           <input type="number" placeholder="00" className="seconds" />
         </section>
-        <button>START</button>
+        <button className="start-button">START</button>
       </section>
     </>
   );
