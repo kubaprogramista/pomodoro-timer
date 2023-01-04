@@ -14,7 +14,7 @@ const Timer = ({ inputMinutes, inputSeconds, show }: dataTypes) => {
     if (show) {
       if (seconds === 0 && minutes === 0) return;
 
-      const countdown = setTimeout(() => {
+      setTimeout(() => {
         setSeconds(seconds - 1);
         if (seconds === 0) {
           setSeconds(seconds + 59);
