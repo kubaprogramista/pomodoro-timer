@@ -1,5 +1,4 @@
 import Heading from "./components/Heading";
-import Timer from "./components/Timer";
 import Settings from "./components/Settings";
 
 function App() {
@@ -7,9 +6,10 @@ function App() {
   let inputSeconds: number = 0;
   return (
     <>
-      <Heading title={"Pomodoro Timer"} />
-      <Settings />
-      <Timer inputMinutes={inputMinutes} inputSeconds={inputSeconds} />
+      <main>
+        <Heading title={"Pomodoro Timer"} />
+        <Settings />
+      </main>
     </>
   );
 }
