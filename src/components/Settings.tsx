@@ -11,14 +11,37 @@ const Settings = () => {
     <>
       <section className="settings">
         <section className="settings-inputs">
-          <input type="number" placeholder="25" className="minutes" />:
-          <input type="number" placeholder="00" className="seconds" />
+          <input
+            type="number"
+            placeholder="25"
+            className="minutes"
+            onChange={(e) => {
+              let minutesValue: number = +e.target.value;
+              if (minutesValue === null) {
+                setInputMinutes(25);
+              } else {
+                setInputMinutes(minutesValue);
+              }
+            }}
+          />
+          :
+          <input
+            type="number"
+            placeholder="00"
+            className="seconds"
+            onChange={(e) => {
+              let secondsValue: number = +e.target.value;
+              if (secondsValue === null) {
+                setInputSeconds(0);
+              } else {
+                setInputSeconds(secondsValue);
+              }
+            }}
+          />
         </section>
         <button
           className="start-button"
           onClick={() => {
-            setInputMinutes(25);
-            setInputSeconds(0);
             setShowTimer(true);
           }}
         >
