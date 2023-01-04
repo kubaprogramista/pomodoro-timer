@@ -49,3 +49,27 @@ body {
   font-size: 4rem;
   text-align: center;
 }
+
+h1 {
+  text-align: center;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.settings-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-inputs input[type="number"] {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  font-size: 4rem;
+}
