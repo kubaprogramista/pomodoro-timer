@@ -11,17 +11,15 @@ const Timer = ({ inputMinutes, inputSeconds, show }: dataTypes) => {
   const [seconds, setSeconds] = useState(startingSeconds);
 
   useEffect(() => {
-    if (show) {
-      if (seconds === 0 && minutes === 0) return;
+    if (seconds === 0 && minutes === 0) return;
 
-      setTimeout(() => {
-        setSeconds(seconds - 1);
-        if (seconds === 0) {
-          setSeconds(seconds + 59);
-          setMinutes(minutes - 1);
-        }
-      }, 1000);
-    }
+    setTimeout(() => {
+      setSeconds(seconds - 1);
+      if (seconds === 0) {
+        setSeconds(seconds + 59);
+        setMinutes(minutes - 1);
+      }
+    }, 1000);
   }, [seconds]);
 
   let result: string;
