@@ -1,5 +1,5 @@
 import Heading from "./components/Heading";
-import Settings from "./components/Settings";
+import Content from "./components/Content";
 import AudioHandler from "./components/AudioHandler";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <>
       <main>
         <Heading title={"Pomodoro Timer"} />
-        <Settings />
+        <Content />
       </main>
       <AudioHandler />
     </>
