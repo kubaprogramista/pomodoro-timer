@@ -5,17 +5,29 @@ const DarkMode = () => {
   let root: any = document.querySelector(":root");
 
   function dark() {
-    root.style.setProperty("--white", "rgb(100, 100, 100, 0.7)");
-    root.style.setProperty("--greyLight-1", "rgb(40, 40, 40)");
-    root.style.setProperty("--greyLight-2", "rgb(20, 20, 20, 0.8)");
-    root.style.setProperty("--slider-color", "rgb(40 ,40 ,40)");
+    localStorage.setItem("theme", "dark");
+    if (localStorage.getItem("theme") === "dark") {
+      root.style.setProperty("--white", "rgb(100, 100, 100, 0.7)");
+      root.style.setProperty("--greyLight-1", "rgb(40, 40, 40)");
+      root.style.setProperty("--greyLight-2", "rgb(20, 20, 20, 0.8)");
+      root.style.setProperty("--slider-color", "rgb(40 ,40 ,40)");
+    }
   }
 
   function light() {
-    root.style.setProperty("--white", "#fff");
-    root.style.setProperty("--greyLight-1", "#e4ebf5");
-    root.style.setProperty("--greyLight-2", "#c8d0e7");
-    root.style.setProperty("--slider-color", "#c8d0e7");
+    localStorage.setItem("theme", "light");
+    if (localStorage.getItem("theme") === "light") {
+      root.style.setProperty("--white", "#fff");
+      root.style.setProperty("--greyLight-1", "#e4ebf5");
+      root.style.setProperty("--greyLight-2", "#c8d0e7");
+      root.style.setProperty("--slider-color", "#c8d0e7");
+    }
+  }
+
+  if (localStorage.getItem("theme") === "dark") {
+    dark();
+  } else {
+    light();
   }
 
   return (
