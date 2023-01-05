@@ -24,11 +24,17 @@ const DarkMode = () => {
     }
   }
 
-  if (localStorage.getItem("theme") === "dark") {
-    dark();
-  } else {
-    light();
-  }
+  window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") {
+      document.querySelector(".dark-mode-section")?.classList.add("active");
+      document.querySelector(".slider")?.classList.add("active");
+      dark();
+    } else {
+      document.querySelector(".dark-mode-section")?.classList.remove("active");
+      document.querySelector(".slider")?.classList.remove("active");
+      light();
+    }
+  };
 
   return (
     <>
