@@ -32,7 +32,11 @@ const Timer = ({ inputMinutes, inputSeconds, show }: dataTypes) => {
 
   return (
     <>
-      <section className="timer">{result}</section>
+      <div className="timer-wrapper">
+        <section className="timer">{result}</section>
+        <span className="wave1"></span>
+        <span className="wave2"></span>
+      </div>
     </>
   );
 };
