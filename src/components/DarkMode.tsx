@@ -6,9 +6,9 @@ const DarkMode = () => {
 
   function dark() {
     root.style.setProperty("--white", "rgb(100, 100, 100)");
-    root.style.setProperty("--greyLight-1", "rgb(50, 50, 50)");
+    root.style.setProperty("--greyLight-1", "rgb(40, 40, 40)");
     root.style.setProperty("--greyLight-2", "rgb(20, 20, 20, 0.8)");
-    root.style.setProperty("--slider-color", "rgb(50 ,50 ,50)");
+    root.style.setProperty("--slider-color", "rgb(40 ,40 ,40)");
   }
 
   function light() {
