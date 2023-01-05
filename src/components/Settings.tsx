@@ -51,8 +51,13 @@ const Settings = () => {
         <button
           className="start-button"
           onClick={() => {
-            let startButton = document.querySelector(".start-button");
+            let startButton: any = document.querySelector(".start-button");
             startButton?.classList.toggle("shadow");
+            if (startButton.classList.length > 1) {
+              startButton.innerHTML = `<i class="fa fa-pause"></i>`;
+            } else {
+              startButton.innerHTML = `<i class="fa fa-play"></i>`;
+            }
             setIsShown(!isShown);
             setShowTimer(isShown);
           }}
