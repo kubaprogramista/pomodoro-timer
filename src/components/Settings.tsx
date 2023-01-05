@@ -7,6 +7,8 @@ const Settings = () => {
   const [showTimer, setShowTimer] = useState(false);
   const [inputMinutes, setInputMinutes] = useState(25);
   const [inputSeconds, setInputSeconds] = useState(0);
+  const [inputBreakMinutes, setInputBreakMinutes] = useState(5);
+  const [inputBreakSeconds, setInputBreakSeconds] = useState(0);
 
   return (
     <section className="main-content">
@@ -46,6 +48,8 @@ const Settings = () => {
         <ShowTimer
           inputMinutes={inputMinutes}
           inputSeconds={inputSeconds}
+          inputBreakMinutes={inputBreakMinutes}
+          inputBreakSeconds={inputBreakSeconds}
           show={showTimer}
         />
         <button
@@ -75,9 +79,9 @@ const Settings = () => {
             onChange={(e) => {
               let minutesValue: number = +e.target.value;
               if (minutesValue === null) {
-                setInputMinutes(5);
+                setInputBreakMinutes(5);
               } else {
-                setInputMinutes(minutesValue);
+                setInputBreakMinutes(minutesValue);
               }
             }}
           />
@@ -88,10 +92,11 @@ const Settings = () => {
             className="seconds"
             onChange={(e) => {
               let secondsValue: number = +e.target.value;
+
               if (secondsValue === null) {
-                setInputSeconds(0);
+                setInputBreakSeconds(0);
               } else {
-                setInputSeconds(secondsValue);
+                setInputBreakSeconds(secondsValue);
               }
             }}
           />
