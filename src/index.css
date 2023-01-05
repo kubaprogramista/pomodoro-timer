@@ -1,6 +1,23 @@
 :root {
-  --font-color: rgb(255, 255, 255);
-  --background-color: rgb(234, 93, 93);
+  --font-color: #5b0eeb;
+  --background-color: rgb(37, 37, 37);
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+
+  --linear-primary: linear-gradient(var(--primary), var(--primary-dark));
+  --box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2),
+    -0.2rem -0.2rem 1.8rem var(--white);
+
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+
+  --white: #ffffff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
 }
 
 *,
@@ -13,7 +30,7 @@
   padding: 0;
   margin: 0;
   border: 0;
-  color: whitesmoke;
+  color: var(--font-color);
   font-family: "Montserrat", sans-serif;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
@@ -45,27 +62,101 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(27, 27, 27);
+  background: var(--greyLight-1);
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 main {
-  background: var(--background-color);
-  background: linear-gradient(var(--background-color), rgb(234, 80, 80));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--greyLight-1);
   padding: 75px;
   border-radius: 20px;
-  border: 5px solid rgb(234, 120, 120);
+  box-shadow: var(--box-shadow);
+}
+
+.timer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: var(--greyLight-1);
+  border: 10px solid var(--primary);
+  border-radius: 100%;
+  box-shadow: var(--box-shadow);
+  height: 200px;
+  width: 200px;
+  z-index: 101;
   font-size: 4rem;
   text-align: center;
 }
 
+.result {
+  z-index: 101;
+}
+
+.wave1 {
+  position: absolute;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 100;
+  box-shadow: 0.4rem 0.4rem 0.8rem var(--greyLight-2),
+    -0.4rem -0.4rem 0.8rem var(--white);
+  background: linear-gradient(
+    to bottom right,
+    var(--greyLight-2) 0%,
+    var(--white) 100%
+  );
+  animation: waves 4s linear infinite;
+}
+
+.wave2 {
+  position: absolute;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 100;
+  box-shadow: 0.4rem 0.4rem 0.8rem var(--greyLight-2),
+    -0.4rem -0.4rem 0.8rem var(--white);
+  animation: waves 4s linear 2s infinite;
+}
+
+@keyframes waves {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 h1 {
   text-align: center;
+  font-size: 2.7rem;
 }
 
 .settings {
@@ -73,6 +164,8 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 20px;
+  width: 215px;
 }
 
 .settings-inputs {
@@ -83,8 +176,9 @@ h1 {
 }
 
 .settings-inputs input[type="number"] {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--greyLight-1);
   color: var(--font-color);
+  box-shadow: var(--box-shadow);
   text-align: center;
   width: 100px;
   height: 100px;
@@ -103,13 +197,14 @@ input::-webkit-inner-spin-button {
 }
 
 ::placeholder {
-  color: rgb(255, 255, 255);
+  color: var(--font-color);
   opacity: 1;
 }
 
 .start-button {
   position: relative;
-  margin-top: 15px;
+  margin-top: 20px;
+  width: 100%;
   padding: 25px;
   font-size: 1.5rem;
   font-weight: bold;
@@ -124,8 +219,8 @@ input::-webkit-inner-spin-button {
   content: "";
   position: absolute;
   bottom: 23px;
-  left: 25px;
-  width: 77px;
+  left: 60px;
+  width: 84px;
   height: 3.5px;
   border-radius: 5px;
   background: var(--font-color);
