@@ -63,8 +63,12 @@ const Settings = () => {
             startButton?.classList.toggle("shadow");
             if (startButton.classList.length > 1) {
               startButton.innerHTML = `<i class="fa fa-pause"></i>`;
+              startButton.style.transition = "all 0.15s ease-in-out";
+              startButton.style.fontSize = "2.6rem";
             } else {
               startButton.innerHTML = `<i class="fa fa-play"></i>`;
+              startButton.style.transition = "all 0.15s ease-in-out";
+              startButton.style.fontSize = "3rem";
             }
             setIsShown(!isShown);
             setShowTimer(isShown);
