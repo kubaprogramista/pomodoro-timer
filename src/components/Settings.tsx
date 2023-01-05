@@ -55,7 +55,11 @@ const Settings = () => {
         <button
           className="start-button"
           onClick={() => {
-            let startButton: any = document.querySelector(".start-button");
+            const startButton: any = document.querySelector(".start-button");
+            const wave1: any = document.querySelector(".wave1");
+            const wave2: any = document.querySelector(".wave2");
+            wave1.classList.toggle("active");
+            wave2.classList.toggle("active");
             startButton?.classList.toggle("shadow");
             if (startButton.classList.length > 1) {
               startButton.innerHTML = `<i class="fa fa-pause"></i>`;
