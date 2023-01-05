@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AudioHandler from "./AudioHandler";
 
 type dataTypes = {
   inputMinutes: number;
@@ -26,8 +27,19 @@ const Timer = ({
   const [seconds, setSeconds] = useState(startingSeconds);
   const [breakMinutes, setBreakMinutes] = useState(breakStartingMinutes);
   const [breakSeconds, setBreakSeconds] = useState(breakStartingSeconds);
-
   const [isBreak, setIsBreak] = useState(false);
+
+  const audioElement: any = document.querySelector("audio");
+
+  audioElement.play();
+
+  function play() {
+    audioElement.muted = false;
+  }
+
+  function pause() {
+    audioElement.muted = true;
+  }
 
   useEffect(() => {
     if (!isBreak) {
@@ -40,6 +52,8 @@ const Timer = ({
         }
         if (seconds === 0 && minutes === 0) {
           setIsBreak(true);
+          play();
+          setTimeout(pause, 8000);
           setBreakMinutes(breakStartingMinutes);
           setBreakSeconds(breakStartingSeconds);
         }
@@ -54,6 +68,8 @@ const Timer = ({
         }
         if (breakSeconds === 0 && breakMinutes === 0) {
           setIsBreak(false);
+          play();
+          setTimeout(pause, 8000);
           setMinutes(startingMinutes);
           setSeconds(startingSeconds);
         }
@@ -82,7 +98,6 @@ const Timer = ({
   return (
     <>
       <div className="timer-wrapper">
-        <audio controls src="src\assets\alarm.mp3" autoPlay></audio>
         <section className="timer">{result}</section>
         <span className="wave1"></span>
         <span className="wave2"></span>
