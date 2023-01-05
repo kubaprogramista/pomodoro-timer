@@ -9,8 +9,9 @@ const Settings = () => {
   const [inputSeconds, setInputSeconds] = useState(0);
 
   return (
-    <>
+    <section className="main-content">
       <section className="settings">
+        <p className="setting-info">Session</p>
         <section className="settings-inputs">
           <input
             type="number"
@@ -40,6 +41,13 @@ const Settings = () => {
             }}
           />
         </section>
+      </section>
+      <section className="main-center">
+        <ShowTimer
+          inputMinutes={inputMinutes}
+          inputSeconds={inputSeconds}
+          show={showTimer}
+        />
         <button
           className="start-button"
           onClick={() => {
@@ -47,15 +55,42 @@ const Settings = () => {
             setShowTimer(isShown);
           }}
         >
-          START
+          <i className="fa fa-play"></i>
         </button>
       </section>
-      <ShowTimer
-        inputMinutes={inputMinutes}
-        inputSeconds={inputSeconds}
-        show={showTimer}
-      />
-    </>
+      <section className="settings">
+        <p className="setting-info">Break</p>
+        <section className="settings-inputs">
+          <input
+            type="number"
+            placeholder="05"
+            className="minutes"
+            onChange={(e) => {
+              let minutesValue: number = +e.target.value;
+              if (minutesValue === null) {
+                setInputMinutes(5);
+              } else {
+                setInputMinutes(minutesValue);
+              }
+            }}
+          />
+          :
+          <input
+            type="number"
+            placeholder="00"
+            className="seconds"
+            onChange={(e) => {
+              let secondsValue: number = +e.target.value;
+              if (secondsValue === null) {
+                setInputSeconds(0);
+              } else {
+                setInputSeconds(secondsValue);
+              }
+            }}
+          />
+        </section>
+      </section>
+    </section>
   );
 };
 export default Settings;
