@@ -8,12 +8,14 @@ const DarkMode = () => {
     root.style.setProperty("--white", "rgb(100, 100, 100)");
     root.style.setProperty("--greyLight-1", "rgb(50, 50, 50)");
     root.style.setProperty("--greyLight-2", "rgb(20, 20, 20, 0.8)");
+    root.style.setProperty("--slider-color", "rgb(50 ,50 ,50)");
   }
 
   function light() {
     root.style.setProperty("--white", "#fff");
     root.style.setProperty("--greyLight-1", "#e4ebf5");
     root.style.setProperty("--greyLight-2", "#c8d0e7");
+    root.style.setProperty("--slider-color", "#c8d0e7");
   }
 
   return (
