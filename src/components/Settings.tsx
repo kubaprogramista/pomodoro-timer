@@ -51,6 +51,8 @@ const Settings = () => {
         <button
           className="start-button"
           onClick={() => {
+            let startButton = document.querySelector(".start-button");
+            startButton?.classList.toggle("shadow");
             setIsShown(!isShown);
             setShowTimer(isShown);
           }}
