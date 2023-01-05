@@ -28,7 +28,13 @@ const ShowTimer = ({
       </>
     );
   } else {
-    return <section className="timer">00:00</section>;
+    return (
+      <div className="timer-wrapper">
+        <section className="timer">00:00</section>
+        <span className="wave1 active"></span>
+        <span className="wave2 active"></span>
+      </div>
+    );
   }
 };
 
