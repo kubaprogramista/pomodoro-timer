@@ -40,9 +40,8 @@ const Timer = ({
         }
         if (seconds === 0 && minutes === 0) {
           setIsBreak(true);
-        }
-        if (breakSeconds === 0 && breakMinutes === 0) {
-          setIsBreak(true);
+          setBreakMinutes(breakStartingMinutes);
+          setBreakSeconds(breakStartingSeconds);
         }
       }, 1000);
     } else if (isBreak) {
@@ -53,11 +52,10 @@ const Timer = ({
           setBreakSeconds(breakSeconds + 59);
           setBreakMinutes(breakMinutes - 1);
         }
-        if (seconds === 0 && minutes === 0) {
-          setIsBreak(false);
-        }
         if (breakSeconds === 0 && breakMinutes === 0) {
           setIsBreak(false);
+          setMinutes(startingMinutes);
+          setSeconds(startingSeconds);
         }
       }, 1000);
     }
@@ -84,6 +82,7 @@ const Timer = ({
   return (
     <>
       <div className="timer-wrapper">
+        <audio controls src="src\assets\alarm.mp3" autoPlay></audio>
         <section className="timer">{result}</section>
         <span className="wave1"></span>
         <span className="wave2"></span>
