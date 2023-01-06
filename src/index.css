@@ -275,3 +275,22 @@ input::-webkit-inner-spin-button {
 .dark-mode-section.active {
   background: var(--font-color);
 }
+
+@media only screen and (max-width: 500px) {
+  .main-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dark-mode-section {
+    top: 5px;
+    right: 50vw;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
