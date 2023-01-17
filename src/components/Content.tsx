@@ -1,4 +1,3 @@
-import Timer from "./Timer";
 import { BaseSyntheticEvent, useState } from "react";
 import ShowTimer from "./ShowTimer";
 
