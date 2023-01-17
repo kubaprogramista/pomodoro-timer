@@ -28,16 +28,17 @@ const Timer = ({
   const [breakSeconds, setBreakSeconds] = useState(breakStartingSeconds);
   const [isBreak, setIsBreak] = useState(false);
 
-  const audioElement: any = document.querySelector("audio");
-
-  audioElement.play();
+  const audioElement: HTMLAudioElement | null = document.querySelector("audio");
+  if (audioElement != null) {
+    audioElement.play();
+  }
 
   function play() {
-    audioElement.muted = false;
+    if (audioElement != null) audioElement.muted = false;
   }
 
   function pause() {
-    audioElement.muted = true;
+    if (audioElement != null) audioElement.muted = true;
   }
 
   useEffect(() => {
