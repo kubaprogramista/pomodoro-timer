@@ -2,10 +2,14 @@ import { useState } from "react";
 
 const DarkMode = () => {
   const [classActive, setClassActive] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
   let root: any = document.querySelector(":root");
 
   function dark() {
     localStorage.setItem("theme", "dark");
+    document.querySelector(".dark-mode-section")?.classList.add("active");
+    document.querySelector(".slider")?.classList.add("active");
+    setIsChecked(true);
     if (localStorage.getItem("theme") === "dark") {
       root.style.setProperty("--white", "rgb(100, 100, 100, 0.7)");
       root.style.setProperty("--greyLight-1", "rgb(40, 40, 40)");
@@ -16,6 +20,9 @@ const DarkMode = () => {
 
   function light() {
     localStorage.setItem("theme", "light");
+    document.querySelector(".dark-mode-section")?.classList.remove("active");
+    document.querySelector(".slider")?.classList.remove("active");
+    setIsChecked(false);
     if (localStorage.getItem("theme") === "light") {
       root.style.setProperty("--white", "#fff");
       root.style.setProperty("--greyLight-1", "#e4ebf5");
@@ -26,12 +33,8 @@ const DarkMode = () => {
 
   window.onload = () => {
     if (localStorage.getItem("theme") === "dark") {
-      document.querySelector(".dark-mode-section")?.classList.add("active");
-      document.querySelector(".slider")?.classList.add("active");
       dark();
     } else {
-      document.querySelector(".dark-mode-section")?.classList.remove("active");
-      document.querySelector(".slider")?.classList.remove("active");
       light();
     }
   };
@@ -41,10 +44,10 @@ const DarkMode = () => {
       <section
         className={"dark-mode-section" + classActive}
         onClick={() => {
-          if (classActive !== " active") {
+          if (!isChecked) {
             setClassActive(" active");
             dark();
-          } else if (classActive === " active") {
+          } else if (isChecked) {
             setClassActive("");
             light();
           }
