@@ -1,5 +1,5 @@
 import Timer from "./Timer";
-import { useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 import ShowTimer from "./ShowTimer";
 
 const Settings = () => {
@@ -9,6 +9,36 @@ const Settings = () => {
   const [inputSeconds, setInputSeconds] = useState(0);
   const [inputBreakMinutes, setInputBreakMinutes] = useState(5);
   const [inputBreakSeconds, setInputBreakSeconds] = useState(0);
+
+  const startTimer = () => {
+    const startButton: any = document.querySelector(".start-button");
+    const wave1: any = document.querySelector(".wave1");
+    const wave2: any = document.querySelector(".wave2");
+    wave1.classList.toggle("active");
+    wave2.classList.toggle("active");
+    startButton?.classList.toggle("shadow");
+    if (startButton.classList.length > 1) {
+      startButton.innerHTML = `<i class="fa fa-pause"></i>`;
+      startButton.style.transition = "all 0.15s ease-in-out";
+      startButton.style.fontSize = "2.6rem";
+    } else {
+      startButton.innerHTML = `<i class="fa fa-play"></i>`;
+      startButton.style.transition = "all 0.15s ease-in-out";
+      startButton.style.fontSize = "3rem";
+    }
+    setIsShown(!isShown);
+    setShowTimer(isShown);
+  };
+
+  window.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.code === "Space") {
+        return startTimer();
+      }
+    },
+    { once: true }
+  );
 
   return (
     <section className="main-content">
@@ -52,28 +82,7 @@ const Settings = () => {
           inputBreakSeconds={inputBreakSeconds}
           show={showTimer}
         />
-        <button
-          className="start-button"
-          onClick={() => {
-            const startButton: any = document.querySelector(".start-button");
-            const wave1: any = document.querySelector(".wave1");
-            const wave2: any = document.querySelector(".wave2");
-            wave1.classList.toggle("active");
-            wave2.classList.toggle("active");
-            startButton?.classList.toggle("shadow");
-            if (startButton.classList.length > 1) {
-              startButton.innerHTML = `<i class="fa fa-pause"></i>`;
-              startButton.style.transition = "all 0.15s ease-in-out";
-              startButton.style.fontSize = "2.6rem";
-            } else {
-              startButton.innerHTML = `<i class="fa fa-play"></i>`;
-              startButton.style.transition = "all 0.15s ease-in-out";
-              startButton.style.fontSize = "3rem";
-            }
-            setIsShown(!isShown);
-            setShowTimer(isShown);
-          }}
-        >
+        <button className="start-button" onClick={startTimer}>
           <i className="fa fa-play"></i>
         </button>
       </section>
