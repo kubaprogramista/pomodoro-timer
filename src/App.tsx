@@ -11,7 +11,6 @@ function App() {
         <Heading title={"Pomodoro Timer"} />
         <Content />
       </main>
-      <audio controls src="src/assets/alarm.wav" autoPlay muted loop></audio>
       <AudioHandler />
     </>
   );
