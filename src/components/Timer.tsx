@@ -41,23 +41,41 @@ const Timer = ({
     if (audioElement != null) audioElement.muted = true;
   }
 
+  // function timer(minutes: number, seconds: number) {
+  //   seconds -= 1;
+  //   if (seconds === 0) {
+  //     minutes -= 1;
+  //     seconds = 60;
+  //   } else if (seconds === 0 && minutes === 0) {
+  //     timer(breakMinutes, breakSeconds);
+  //   }
+  //   console.log(seconds);
+
+  //   return [minutes, seconds];
+  // }
+  // console.log(timer(minutes, seconds));
+
+  function timer(minutes: number, seconds: number) {
+    setTimeout(() => {
+      setIsBreak(false);
+      setSeconds(seconds - 1);
+      if (seconds === 0) {
+        setSeconds(seconds + 59);
+        setMinutes(minutes - 1);
+      }
+      if (seconds === 0 && minutes === 0) {
+        setIsBreak(true);
+        play();
+        setTimeout(pause, 8000);
+        setBreakMinutes(breakStartingMinutes);
+        setBreakSeconds(breakStartingSeconds);
+      }
+    }, 1000);
+  }
+
   useEffect(() => {
     if (!isBreak) {
-      setTimeout(() => {
-        setIsBreak(false);
-        setSeconds(seconds - 1);
-        if (seconds === 0) {
-          setSeconds(seconds + 59);
-          setMinutes(minutes - 1);
-        }
-        if (seconds === 0 && minutes === 0) {
-          setIsBreak(true);
-          play();
-          setTimeout(pause, 8000);
-          setBreakMinutes(breakStartingMinutes);
-          setBreakSeconds(breakStartingSeconds);
-        }
-      }, 1000);
+      timer(minutes, seconds);
     } else if (isBreak) {
       setTimeout(() => {
         setIsBreak(true);
