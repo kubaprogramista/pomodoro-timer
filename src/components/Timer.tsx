@@ -71,7 +71,7 @@ const Timer = ({
           setBreakMinutes(breakStartingMinutes);
           setBreakSeconds(breakStartingSeconds);
         }
-      }, 1000);
+      }, 999);
     } else if (isBreak) {
       setTimeout(() => {
         setIsBreak(true);
