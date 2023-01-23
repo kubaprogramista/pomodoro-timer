@@ -55,27 +55,23 @@ const Timer = ({
   // }
   // console.log(timer(minutes, seconds));
 
-  function timer(minutes: number, seconds: number) {
-    setTimeout(() => {
-      setIsBreak(false);
-      setSeconds(seconds - 1);
-      if (seconds === 0) {
-        setSeconds(seconds + 59);
-        setMinutes(minutes - 1);
-      }
-      if (seconds === 0 && minutes === 0) {
-        setIsBreak(true);
-        play();
-        setTimeout(pause, 8000);
-        setBreakMinutes(breakStartingMinutes);
-        setBreakSeconds(breakStartingSeconds);
-      }
-    }, 1000);
-  }
-
-  useEffect(() => {
+  function timer(minutes: number, seconds: number, isBreak: boolean) {
     if (!isBreak) {
-      timer(minutes, seconds);
+      setTimeout(() => {
+        setIsBreak(false);
+        setSeconds(seconds - 1);
+        if (seconds === 0) {
+          setSeconds(seconds + 59);
+          setMinutes(minutes - 1);
+        }
+        if (seconds === 0 && minutes === 0) {
+          setIsBreak(true);
+          play();
+          setTimeout(pause, 8000);
+          setBreakMinutes(breakStartingMinutes);
+          setBreakSeconds(breakStartingSeconds);
+        }
+      }, 1000);
     } else if (isBreak) {
       setTimeout(() => {
         setIsBreak(true);
@@ -93,6 +89,10 @@ const Timer = ({
         }
       }, 1000);
     }
+  }
+
+  useEffect(() => {
+    timer(minutes, seconds, isBreak);
   }, [seconds, breakSeconds]);
 
   let result: string;
