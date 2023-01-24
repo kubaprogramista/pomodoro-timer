@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useState } from "react";
+import { useState } from "react";
 import ShowTimer from "./ShowTimer";
 
 const Settings = () => {
