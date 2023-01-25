@@ -41,20 +41,6 @@ const Timer = ({
     if (audioElement != null) audioElement.muted = true;
   }
 
-  // function timer(minutes: number, seconds: number) {
-  //   seconds -= 1;
-  //   if (seconds === 0) {
-  //     minutes -= 1;
-  //     seconds = 60;
-  //   } else if (seconds === 0 && minutes === 0) {
-  //     timer(breakMinutes, breakSeconds);
-  //   }
-  //   console.log(seconds);
-
-  //   return [minutes, seconds];
-  // }
-  // console.log(timer(minutes, seconds));
-
   function timer(minutes: number, seconds: number, isBreak: boolean) {
     if (!isBreak) {
       setTimeout(() => {
