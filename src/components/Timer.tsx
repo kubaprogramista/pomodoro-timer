@@ -45,45 +45,44 @@ const Timer = ({
 
   function timer(minutes: number, seconds: number, isBreak: boolean) {
     if (!isBreak) {
-      window.setInterval(() => {
-        const millis: number = Date.now() - start;
+      const millis: number = Date.now() - start;
+      let checkTimer = Math.floor(millis / 1000);
 
-        setIsBreak(false);
-        setSeconds(seconds - 1);
-        if (seconds === 0) {
-          setSeconds(seconds + 59);
-          setMinutes(minutes - 1);
-        }
-        if (seconds === 0 && minutes === 0) {
-          setIsBreak(true);
-          play();
-          setTimeout(pause, 8000);
-          setBreakMinutes(breakStartingMinutes);
-          setBreakSeconds(breakStartingSeconds);
-        }
-      }, 1000);
-    } else if (isBreak) {
-      window.setInterval(() => {
+      setIsBreak(false);
+      setSeconds((seconds) => (seconds -= checkTimer));
+      if (seconds === 0) {
+        setSeconds((seconds) => seconds + 59);
+        setMinutes((minutes) => minutes - 1);
+      }
+      if (seconds === 0 && minutes === 0) {
         setIsBreak(true);
-        setBreakSeconds(breakSeconds - 1);
-        if (breakSeconds === 0) {
-          setBreakSeconds(breakSeconds + 59);
-          setBreakMinutes(breakMinutes - 1);
-        }
-        if (breakSeconds === 0 && breakMinutes === 0) {
-          setIsBreak(false);
-          play();
-          setTimeout(pause, 8000);
-          setMinutes(startingMinutes);
-          setSeconds(startingSeconds);
-        }
-      }, 1000);
+        play();
+        setTimeout(pause, 8000);
+        setBreakMinutes(breakStartingMinutes);
+        setBreakSeconds(breakStartingSeconds);
+      }
+    } else if (isBreak) {
+      setIsBreak(true);
+      setBreakSeconds(breakSeconds - 1);
+      if (breakSeconds === 0) {
+        setBreakSeconds(breakSeconds + 59);
+        setBreakMinutes(breakMinutes - 1);
+      }
+      if (breakSeconds === 0 && breakMinutes === 0) {
+        setIsBreak(false);
+        play();
+        setTimeout(pause, 8000);
+        setMinutes(startingMinutes);
+        setSeconds(startingSeconds);
+      }
     }
   }
 
   useEffect(() => {
-    timer(minutes, seconds, isBreak);
-  }, [show]);
+    setTimeout(() => {
+      timer(minutes, seconds, isBreak);
+    }, 1000);
+  }, [show, start]);
 
   let result: string;
   result = "00:00";
