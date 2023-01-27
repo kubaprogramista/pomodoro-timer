@@ -45,7 +45,7 @@ const Timer = ({
 
   function timer(minutes: number, seconds: number, isBreak: boolean) {
     if (!isBreak) {
-      window.setTimeout(() => {
+      window.setInterval(() => {
         const millis: number = Date.now() - start;
 
         setIsBreak(false);
@@ -63,7 +63,7 @@ const Timer = ({
         }
       }, 1000);
     } else if (isBreak) {
-      window.setTimeout(() => {
+      window.setInterval(() => {
         setIsBreak(true);
         setBreakSeconds(breakSeconds - 1);
         if (breakSeconds === 0) {
@@ -83,7 +83,7 @@ const Timer = ({
 
   useEffect(() => {
     timer(minutes, seconds, isBreak);
-  }, [seconds, breakSeconds]);
+  }, [show]);
 
   let result: string;
   result = "00:00";
