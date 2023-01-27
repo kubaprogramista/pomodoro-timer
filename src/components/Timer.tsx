@@ -48,8 +48,6 @@ const Timer = ({
       const millis: number = Date.now() - start;
       let checkTimer = Math.floor(millis / 1000);
 
-      console.log(seconds);
-
       setIsBreak(false);
       setSeconds((seconds) => (seconds -= checkTimer));
       if (seconds === 0) {
