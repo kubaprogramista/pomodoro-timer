@@ -41,9 +41,13 @@ const Timer = ({
     if (audioElement != null) audioElement.muted = true;
   }
 
+  const start: number = Date.now();
+
   function timer(minutes: number, seconds: number, isBreak: boolean) {
     if (!isBreak) {
-      setTimeout(() => {
+      window.setTimeout(() => {
+        const millis: number = Date.now() - start;
+
         setIsBreak(false);
         setSeconds(seconds - 1);
         if (seconds === 0) {
@@ -59,7 +63,7 @@ const Timer = ({
         }
       }, 1000);
     } else if (isBreak) {
-      setTimeout(() => {
+      window.setTimeout(() => {
         setIsBreak(true);
         setBreakSeconds(breakSeconds - 1);
         if (breakSeconds === 0) {
