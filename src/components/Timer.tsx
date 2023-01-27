@@ -46,10 +46,10 @@ const Timer = ({
   function timer(minutes: number, seconds: number, isBreak: boolean) {
     if (!isBreak) {
       const millis: number = Date.now() - start;
-      let checkTimer = Math.floor(millis / 1000);
+      let oneSecond = Math.floor(millis / 1000);
 
       setIsBreak(false);
-      setSeconds((seconds) => (seconds -= checkTimer));
+      setSeconds((seconds) => (seconds -= oneSecond));
       if (seconds === 0) {
         setSeconds((seconds) => seconds + 60);
         setMinutes((minutes) => minutes - 1);
