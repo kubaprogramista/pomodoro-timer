@@ -28,19 +28,6 @@ const Timer = ({
   const [breakSeconds, setBreakSeconds] = useState(breakStartingSeconds);
   const [isBreak, setIsBreak] = useState(false);
 
-  const audioElement: HTMLAudioElement | null = document.querySelector("audio");
-  if (audioElement != null) {
-    audioElement.play();
-  }
-
-  function play() {
-    if (audioElement != null) audioElement.muted = false;
-  }
-
-  function pause() {
-    if (audioElement != null) audioElement.muted = true;
-  }
-
   const start: number = Date.now();
 
   function timer(minutes: number, seconds: number, isBreak: boolean) {
@@ -56,8 +43,6 @@ const Timer = ({
       }
       if (seconds === 0 && minutes === 0) {
         setIsBreak(true);
-        play();
-        setTimeout(pause, 8000);
         setBreakMinutes(breakStartingMinutes);
         setBreakSeconds(breakStartingSeconds);
       }
@@ -70,8 +55,6 @@ const Timer = ({
       }
       if (breakSeconds === 0 && breakMinutes === 0) {
         setIsBreak(false);
-        play();
-        setTimeout(pause, 8000);
         setMinutes(startingMinutes);
         setSeconds(startingSeconds);
       }
