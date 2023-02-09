@@ -7,10 +7,8 @@ function App() {
     <>
       <main>
         <DarkMode />
-
         <h1>Pomodoro Timer</h1>
         <Content />
-        {/* <audio controls src="src/assets/alarm.wav" autoPlay muted loop></audio> */}
       </main>
     </>
   );
