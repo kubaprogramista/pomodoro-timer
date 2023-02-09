@@ -108,7 +108,6 @@ const Settings = () => {
             className="seconds"
             onChange={(e) => {
               let secondsValue: number = +e.target.value;
-
               if (secondsValue === null) {
                 setInputBreakSeconds(0);
               } else {
