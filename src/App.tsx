@@ -1,4 +1,3 @@
-import Heading from "./components/Heading";
 import Content from "./components/Content";
 import DarkMode from "./components/DarkMode";
 
